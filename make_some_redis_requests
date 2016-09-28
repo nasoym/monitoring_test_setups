@@ -1,0 +1,11 @@
+#!/bin/bash
+
+curl -i "http://localhost:7379/GET/foo"
+curl -i "http://localhost:7379/GET/bar"
+curl -i "http://localhost:7379/GET/bla"
+curl -i "http://localhost:7379/SET/foo/bar"
+curl -i "http://localhost:7379/SET/bar/foo"
+curl -i "http://localhost:7379/GET/foo"
+curl -i "http://localhost:7379/GET/bar"
+curl -i "http://localhost:7379/GET/bla"
+

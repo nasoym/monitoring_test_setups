@@ -1,0 +1,55 @@
+redis:
+    image: redis 
+    restart: always
+    ports:
+        - 6379:6379
+
+webdis:
+  image: anapsix/webdis
+  restart: always
+  ports:
+      - 7379:7379
+  links:
+      - redis
+
+redis_exporter:
+    image: 21zoo/redis_exporter
+    restart: always
+    ports:
+        - 9121:9121
+    links:
+        - redis
+    command: "-redis.addr redis:6379"
+
+node_exporter:
+    image: prom/node-exporter
+    restart: always
+    ports:
+        - 9100:9100
+
+prometheus:
+    image: prom/prometheus:0.20.0
+    restart: always
+    volumes:
+        - ./configuration/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+        - 9090:9090
+    command: -config.file=/etc/prometheus/prometheus.yml -storage.local.path=/prometheus -web.console.libraries=/etc/prometheus/console_libraries -web.console.templates=/etc/prometheus/consoles
+    links:
+        - node_exporter
+        - redis_exporter
+
+grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+        - 3000:3000
+    volumes:
+        - ./grafana:/var/lib/grafana
+    command: --config /var/lib/grafana/grafana.ini
+    links:
+        - prometheus
+    environment:
+        - GF_DASHBOARDS_JSON_ENABLED=true
+        - GF_AUTH_ANONYMOUS_ENABLED=true
+

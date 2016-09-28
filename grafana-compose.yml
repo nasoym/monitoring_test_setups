@@ -1,0 +1,21 @@
+grafana_storage:
+   image: grafana/grafana:3.1.1
+   user: grafana
+   volumes:
+     # - /var/lib/grafana
+     - ./grafana_test:/var/lib/grafana
+   command: "true"
+
+grafana:
+   image: grafana/grafana:3.1.1
+   ports: 
+     - 3000:3000
+   volumes_from:
+     - grafana_storage
+   command: --config /var/lib/grafana/grafana.ini
+   environment:
+     - GF_DASHBOARDS_JSON_ENABLED=true
+     - GF_AUTH_ANONYMOUS_ENABLED=true
+     - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource,mtanda-heatmap-epoch-panel,mtanda-histogram-panel,grafana-piechart-panel
+
+
