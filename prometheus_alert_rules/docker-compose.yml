@@ -29,7 +29,7 @@ alertreceiver:
       - 9900:9900
     volumes:
       - ./goexpose.json:/scripts/goexpose_config.json
-    command: "goexpose --config /scripts/goexpose_config.json"
+    command: "goexpose -logtostderr --config /scripts/goexpose_config.json"
  
 alertmanager:
     image: prom/alertmanager:v0.4.2
