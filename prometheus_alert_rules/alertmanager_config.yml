@@ -1,7 +1,7 @@
 global:
 
 # templates:
-# - /etc/alertmanager/template/*.tmpl
+#   - /etc/alertmanager/alertmanager_template.tmpl
 
 # The root route on which each incoming alert enters.
 route:
@@ -13,4 +13,8 @@ route:
 receivers:
 - name: alertreceiver
   webhook_configs:
-    - url: "http://alertreceiver"
+    - url: 'http://alertreceiver:9900/alert'
+    # - url: 'http://alertreceiver/abc/{{ .GroupLabels.alertname }}'
+    # - url: 'http://alertreceiver/foo/{{ template "webhook.url" . }}'
+    # - url: "http://alertreceiver/abc/{{ .GroupLabels.alertname }}"
+    # - url: "http://alertreceiver/abc/{{ .GroupLabels.alertname }}"

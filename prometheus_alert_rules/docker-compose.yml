@@ -22,14 +22,22 @@ redis_exporter:
     command: "-redis.addr redis:6379"
 
 alertreceiver:
-    image: nginx
-
+    # image: httpd
+    # image: nginx
+    image: shell_goexpose
+    ports:
+      - 9900:9900
+    volumes:
+      - ./goexpose.json:/scripts/goexpose_config.json
+    command: "goexpose --config /scripts/goexpose_config.json"
+ 
 alertmanager:
     image: prom/alertmanager:v0.4.2
     ports:
         - 9093:9093
     volumes:
         - ./alertmanager_config.yml:/etc/alertmanager/config.yml
+        # - ./alertmanager_template.tmpl:/etc/alertmanager/alertmanager_template.tmpl
     links:
         - alertreceiver
 

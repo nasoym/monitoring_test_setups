@@ -1,0 +1,22 @@
+{
+  "port": 9900,
+  "pretty_json": true,
+  "endpoints": [
+    {
+      "path": "/alert",
+      "methods": {
+        "POST": {
+          "type": "shell",
+          "config": {
+            "output":"raw",
+            "commands": [
+              {
+                "command": "echo 'request body>{{.request.body}}<'"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 docker-compose up -d
 
+sleep 3 
+
 curl -s "http://localhost:7379/SET/foo/bar"
 curl -s "http://localhost:7379/GET/foo"
 curl -s "http://localhost:7379/GET/foo"
