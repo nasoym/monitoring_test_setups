@@ -1,0 +1,12 @@
+grafana:
+   image: grafana/grafana:3.1.1
+   ports: 
+     - 3000:3000
+   volumes:
+     - ./grafana:/var/lib/grafana
+   command: --config /var/lib/grafana/grafana.ini
+   environment:
+     - GF_DASHBOARDS_JSON_ENABLED=true
+     - GF_AUTH_ANONYMOUS_ENABLED=true
+
+

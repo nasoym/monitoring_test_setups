@@ -2,8 +2,7 @@ grafana_storage:
    image: grafana/grafana:3.1.1
    user: grafana
    volumes:
-     # - /var/lib/grafana
-     - ./grafana_test:/var/lib/grafana
+     - /var/lib/grafana
    command: "true"
 
 grafana:
