@@ -1,0 +1,43 @@
+redis:
+    image: redis 
+    restart: always
+    ports:
+        - 6379:6379
+
+webdis:
+  image: anapsix/webdis
+  restart: always
+  ports:
+      - 7379:7379
+  links:
+      - redis
+
+redis_exporter:
+    image: 21zoo/redis_exporter
+    restart: always
+    ports:
+        - 9121:9121
+    links:
+        - redis
+    command: "-redis.addr redis:6379"
+
+alertmanager:
+    image: prom/alertmanager:v0.4.2
+    ports:
+        - 9093:9093
+    volumes:
+        - ./alertmanager_config.yml:/etc/alertmanager/config.yml
+
+prometheus:
+    image: prom/prometheus:1.1.2
+    restart: always
+    volumes:
+        - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+        - ./test_alert.rules:/etc/prometheus/alerts/test_alert.rules
+    ports:
+        - 9090:9090
+    command: -config.file=/etc/prometheus/prometheus.yml -storage.local.path=/prometheus -web.console.libraries=/etc/prometheus/console_libraries -web.console.templates=/etc/prometheus/consoles -alertmanager.url=http://alertmanager:9093
+    links:
+        - redis_exporter
+        - alertmanager
+

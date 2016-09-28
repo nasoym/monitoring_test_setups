@@ -1,0 +1,2 @@
+ALERT TestAlertKeyHits
+  IF sum(redis_keyspace_hits) > 2
