@@ -21,15 +21,20 @@ redis_exporter:
         - redis
     command: "-redis.addr redis:6379"
 
+alertreceiver:
+    image: nginx
+
 alertmanager:
     image: prom/alertmanager:v0.4.2
     ports:
         - 9093:9093
     volumes:
         - ./alertmanager_config.yml:/etc/alertmanager/config.yml
+    links:
+        - alertreceiver
 
 prometheus:
-    image: prom/prometheus:1.1.2
+    image: prom/prometheus:0.20.0
     restart: always
     volumes:
         - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro

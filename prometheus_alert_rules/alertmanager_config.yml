@@ -13,4 +13,4 @@ route:
 receivers:
 - name: alertreceiver
   webhook_configs:
-    - url: "http://"
+    - url: "http://alertreceiver"
