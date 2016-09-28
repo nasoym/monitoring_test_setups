@@ -21,12 +21,6 @@ redis_exporter:
         - redis
     command: "-redis.addr redis:6379"
 
-node_exporter:
-    image: prom/node-exporter
-    restart: always
-    ports:
-        - 9100:9100
-
 prometheus:
     image: prom/prometheus:0.20.0
     restart: always
@@ -36,7 +30,6 @@ prometheus:
         - 9090:9090
     command: -config.file=/etc/prometheus/prometheus.yml -storage.local.path=/prometheus -web.console.libraries=/etc/prometheus/console_libraries -web.console.templates=/etc/prometheus/consoles
     links:
-        - node_exporter
         - redis_exporter
 
 grafana:
@@ -45,7 +38,8 @@ grafana:
     ports:
         - 3000:3000
     volumes:
-        - ./grafana:/var/lib/grafana
+        - ./grafana.ini:/var/lib/grafana/grafana.ini
+        - ./grafana_dashboard_redis.json:/var/lib/grafana/dashboards/grafana_dashboard_redis.json
     command: --config /var/lib/grafana/grafana.ini
     links:
         - prometheus

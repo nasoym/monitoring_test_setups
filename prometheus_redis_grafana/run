@@ -1,14 +1,19 @@
 #!/bin/bash
 
-
 docker-compose up -d
 
-# sleep 5
-#
-# ./add_datasources
-#
-# sleep 5
-#
-# ./make_some_redis_requests
-#
-#
+
+for i in {1..20}; do 
+  curl -s "http://localhost:3000" >/dev/null && break
+  sleep 1
+done
+curl -s "http://localhost:3000" >/dev/null || { echo "grafana did not respond!" >&2; exit 1;}
+./add_datasources
+
+./make_some_redis_requests
+
+open -a "Google Chrome" "http://localhost:3000/dashboard/file/grafana_dashboard_redis.json"
+
+open -a "Google Chrome" "http://localhost:9090/graph#%5B%7B%22range_input%22%3A%2230h%22%2C%22end_input%22%3A%22%22%2C%22step_input%22%3A%22%22%2C%22stacked%22%3A%22%22%2C%22expr%22%3A%22redis_keyspace_hits%22%2C%22tab%22%3A0%7D%5D"
+
+

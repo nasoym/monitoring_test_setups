@@ -4,7 +4,7 @@
   "description": "redis",
   "tags": [],
   "style": "dark",
-  "timezone": "utc",
+  "timezone": "browser",
   "editable": true,
   "hideControls": false,
   "sharedCrosshair": false,
@@ -12,11 +12,11 @@
     {
       "collapse": false,
       "editable": true,
-      "height": "250px",
+      "height": 253,
       "panels": [
         {
           "aliasColors": {},
-          "bars": false,
+          "bars": true,
           "datasource": "prometheus",
           "editable": true,
           "error": false,
@@ -38,25 +38,25 @@
             "total": false,
             "values": false
           },
-          "lines": true,
+          "lines": false,
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
-          "points": false,
+          "points": true,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 12,
+          "span": 6.158398437500001,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "redis_keyspace_hits{stage=\"stage_exp\",tier=\"tier_redis\"}",
+              "expr": "redis_keyspace_hits",
               "interval": "",
               "intervalFactor": 2,
               "refId": "A",
-              "step": 20
+              "step": 240
             }
           ],
           "timeFrom": null,
@@ -90,18 +90,10 @@
               "show": true
             }
           ]
-        }
-      ],
-      "title": "Row"
-    },
-    {
-      "collapse": false,
-      "editable": true,
-      "height": "250px",
-      "panels": [
+        },
         {
           "aliasColors": {},
-          "bars": false,
+          "bars": true,
           "datasource": "prometheus",
           "editable": true,
           "error": false,
@@ -123,25 +115,25 @@
             "total": false,
             "values": false
           },
-          "lines": true,
+          "lines": false,
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
           "percentage": false,
           "pointradius": 5,
-          "points": false,
+          "points": true,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 12,
+          "span": 5.841601562499999,
           "stack": false,
           "steppedLine": false,
           "targets": [
             {
-              "expr": "redis_keyspace_misses{stage=\"stage_exp\",tier=\"tier_redis\"}",
+              "expr": "redis_keyspace_misses",
               "interval": "",
               "intervalFactor": 2,
               "refId": "A",
-              "step": 20
+              "step": 240
             }
           ],
           "timeFrom": null,
@@ -181,7 +173,7 @@
     }
   ],
   "time": {
-    "from": "now-3h",
+    "from": "now-30h",
     "to": "now"
   },
   "timepicker": {
