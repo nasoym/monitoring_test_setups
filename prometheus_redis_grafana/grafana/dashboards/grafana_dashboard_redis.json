@@ -1,7 +1,7 @@
 {
-  "id": 2,
-  "title": "testDashboard Copy",
-  "description": "test description",
+  "id": 1,
+  "title": "redis",
+  "description": "redis",
   "tags": [],
   "style": "dark",
   "timezone": "utc",
@@ -61,7 +61,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Panel Title",
+          "title": "redis hits",
           "tooltip": {
             "msResolution": false,
             "shared": true,
@@ -146,7 +146,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Panel Title",
+          "title": "redis misses",
           "tooltip": {
             "msResolution": false,
             "shared": true,

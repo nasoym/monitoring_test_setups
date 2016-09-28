@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+docker-compose up -d
+
+# sleep 5
+#
+# ./add_datasources
+#
+# sleep 5
+#
+# ./make_some_redis_requests
+#
+#
