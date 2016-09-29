@@ -13,6 +13,13 @@
     {
       "path": "/search",
       "methods":{
+        "POST": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/search.json"
+          }
+        },
         "GET": {
           "type":"filesystem",
           "config": {
@@ -25,6 +32,13 @@
     {
       "path": "/query",
       "methods":{
+        "POST": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/time.json"
+          }
+        },
         "GET": {
           "type":"filesystem",
           "config": {
@@ -37,6 +51,13 @@
     {
       "path": "/annotations",
       "methods":{
+        "POST": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/annotations.json"
+          }
+        },
         "GET": {
           "type":"filesystem",
           "config": {
