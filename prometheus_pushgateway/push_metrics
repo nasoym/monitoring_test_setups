@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo 'bla 1.0' | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/bla"
+sleep 0.5
+echo 'bla 14.0' | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/bla"
+sleep 0.5
+echo 'bla -10.0' | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/bla"
+sleep 0.5
+echo 'bla 5.0' | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/bla"
+sleep 0.5
+echo 'bla 9.0' | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/bla"
+sleep 0.5
+echo 'bla 1.0' | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/bla"
+

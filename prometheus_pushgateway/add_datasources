@@ -1,0 +1,15 @@
+#!/bin/bash
+
+: ${GRAFANA_SERVER:="http://localhost:3000"}
+
+curl -X POST -H 'Content-Type: application/json;charset=UTF-8' --user admin:admin \
+--data-binary "{\
+\"name\": \"prometheus\",\
+\"type\": \"prometheus\",\
+\"access\": \"proxy\",\
+\"url\": \"http://prometheus:9090\",\
+\"basicAuth\": false\
+}" \
+"${GRAFANA_SERVER}/api/datasources"
+
+
