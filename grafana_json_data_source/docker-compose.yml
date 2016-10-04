@@ -3,8 +3,8 @@ datasource:
     ports:
       - 8080:8080
     volumes:
-      - ./goexpose.json:/scripts/goexpose.json
-      - ./files:/files
+      - ./goexpose.json:/scripts/goexpose.json:ro
+      - ./files:/files:ro
     command: "goexpose -logtostderr --config /scripts/goexpose.json"
 
 grafana:
@@ -12,8 +12,8 @@ grafana:
    ports: 
      - 3000:3000
    volumes:
-     - ./grafana.ini:/var/lib/grafana/grafana.ini
-     - ./grafana_dashboard.json:/var/lib/grafana/dashboards/grafana_dashboard.json
+     - ./grafana.ini:/var/lib/grafana/grafana.ini:ro
+     - ./grafana_dashboard.json:/var/lib/grafana/dashboards/grafana_dashboard.json:ro
    command: --config /var/lib/grafana/grafana.ini
    environment:
      - GF_DASHBOARDS_JSON_ENABLED=true
