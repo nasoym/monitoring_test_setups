@@ -12,18 +12,15 @@
     {
       "collapse": false,
       "editable": true,
-      "height": 193.625,
+      "height": 404,
       "panels": [
         {
-          "aliasColors": {
-            "foo": "#6ED0E0",
-            "bar": "#629E51"
-          },
-          "bars": true,
+          "aliasColors": {},
+          "bars": false,
           "datasource": "customjson",
           "editable": true,
           "error": false,
-          "fill": 1,
+          "fill": 0,
           "grid": {
             "threshold1": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
@@ -61,14 +58,6 @@
               "refId": "A",
               "step": 240,
               "target": "foo"
-            },
-            {
-              "expr": "",
-              "interval": "",
-              "intervalFactor": 2,
-              "refId": "B",
-              "step": 240,
-              "target": "bar"
             }
           ],
           "timeFrom": null,
@@ -108,8 +97,8 @@
     }
   ],
   "time": {
-    "from": "2015-12-30T12:00:00.000Z",
-    "to": "2016-01-03T12:00:00.000Z"
+    "from": "2016-01-01T10:00:00.000Z",
+    "to": "2016-01-01T14:00:00.000Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -141,7 +130,14 @@
     "list": []
   },
   "annotations": {
-    "list": []
+    "list": [
+      {
+        "name": "bla",
+        "datasource": "customjson",
+        "iconColor": "rgb(96, 113, 255)",
+        "enable": true
+      }
+    ]
   },
   "refresh": false,
   "schemaVersion": 12,
@@ -149,3 +145,4 @@
   "links": [],
   "gnetId": null
 }
+
