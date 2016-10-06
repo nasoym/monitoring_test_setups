@@ -12,7 +12,7 @@
     {
       "collapse": false,
       "editable": true,
-      "height": 300,
+      "height": 706.4375,
       "panels": [
         {
           "aliasColors": {},
@@ -47,7 +47,7 @@
           "points": false,
           "renderer": "flot",
           "seriesOverrides": [],
-          "span": 12,
+          "span": 6.0095703125,
           "stack": true,
           "steppedLine": false,
           "targets": [
@@ -56,12 +56,89 @@
               "interval": "",
               "intervalFactor": 2,
               "refId": "A",
-              "step": 240
+              "step": 2
             }
           ],
           "timeFrom": null,
           "timeShift": null,
           "title": "data",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "show": true
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "prometheus",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 2,
+          "isNew": true,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 5.9904296875,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "logs",
+              "interval": "",
+              "intervalFactor": 2,
+              "refId": "A",
+              "step": 2
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "logs",
           "tooltip": {
             "msResolution": false,
             "shared": true,
@@ -137,3 +214,4 @@
   "links": [],
   "gnetId": null
 }
+
