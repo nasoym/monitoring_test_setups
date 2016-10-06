@@ -1,0 +1,26 @@
+[
+  {
+    "columns": [
+      { "text": "Time", "type": "time", "sort": true, "desc": true },
+      { "text": "foo", "type":"text" },
+      { "text": "mean" },
+      { "text": "sum" }
+    ],
+    "rows": [
+      [
+        1451646000000,
+        "<a href='http://www.startpage.com'>start</a> foo",
+        4,
+        null
+      ],
+      [
+        1451649600000,
+        "<br>bar</br>\n <a href='http://www/google.com'>google</a>",
+        1002.76215352,
+        1002.76215352
+      ]
+    ],
+    "type": "table"
+  }
+]
+

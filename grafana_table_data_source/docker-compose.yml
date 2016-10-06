@@ -1,0 +1,25 @@
+datasource:
+    image: nasoym/goexpose
+    ports:
+      - 8080:8080
+    volumes:
+      - ./goexpose.json:/scripts/goexpose.json
+      - ./files:/files:ro
+    command: "goexpose -logtostderr --config /scripts/goexpose.json"
+
+grafana:
+   image: grafana/grafana:3.1.1
+   ports: 
+     - 3000:3000
+   volumes:
+     - ./grafana.ini:/var/lib/grafana/grafana.ini
+     - ./grafana_dashboard.json:/var/lib/grafana/dashboards/grafana_dashboard.json
+   command: --config /var/lib/grafana/grafana.ini
+   environment:
+     - GF_DASHBOARDS_JSON_ENABLED=true
+     - GF_AUTH_ANONYMOUS_ENABLED=true
+     - GF_INSTALL_PLUGINS=grafana-simple-json-datasource
+   links:
+     - datasource
+
+
