@@ -12,101 +12,126 @@
     {
       "collapse": false,
       "editable": true,
-      "height": 237,
+      "height": 260.625,
       "panels": [
         {
-          "title": "Panel Title",
-          "error": false,
-          "span": 12,
+          "columns": [],
+          "datasource": "two",
           "editable": true,
-          "type": "table",
-          "isNew": true,
+          "error": false,
+          "fontSize": "100%",
           "id": 1,
+          "isNew": true,
+          "pageSize": null,
+          "scroll": true,
+          "showHeader": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "span": 6,
+          "styles": [
+            {
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Time",
+              "type": "date"
+            },
+            {
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": 2,
+              "pattern": "/.*/",
+              "sanitize": true,
+              "thresholds": [],
+              "type": "string",
+              "unit": "short"
+            }
+          ],
           "targets": [
             {
               "refId": "A",
               "target": "foo"
             }
           ],
-          "styles": [
-            {
-              "type": "date",
-              "pattern": "Time",
-              "dateFormat": "YYYY-MM-DD HH:mm:ss"
-            },
-            {
-              "unit": "short",
-              "type": "string",
-              "decimals": 2,
-              "colors": [
-                "rgba(245, 54, 54, 0.9)",
-                "rgba(237, 129, 40, 0.89)",
-                "rgba(50, 172, 45, 0.97)"
-              ],
-              "colorMode": null,
-              "pattern": "/.*/",
-              "thresholds": [],
-              "sanitize": true
-            }
-          ],
+          "title": "failed ebda exports",
           "transform": "table",
-          "pageSize": null,
-          "showHeader": true,
-          "columns": [],
-          "scroll": true,
-          "fontSize": "100%",
-          "sort": {
-            "col": 0,
-            "desc": true
-          },
-          "datasource": "customjson"
+          "type": "table"
         },
         {
           "title": "Panel Title",
           "error": false,
-          "span": 12,
+          "span": 6,
           "editable": true,
-          "type": "table",
+          "type": "graph",
           "isNew": true,
           "id": 2,
           "targets": [
             {
-              "refId": "A",
-              "target": "foo"
+              "refId": "A"
             }
           ],
-          "styles": [
+          "datasource": null,
+          "renderer": "flot",
+          "yaxes": [
             {
-              "type": "date",
-              "pattern": "Time",
-              "dateFormat": "YYYY-MM-DD HH:mm:ss"
+              "label": null,
+              "show": true,
+              "logBase": 1,
+              "min": null,
+              "max": null,
+              "format": "short"
             },
             {
-              "unit": "short",
-              "type": "string",
-              "decimals": 2,
-              "colors": [
-                "rgba(245, 54, 54, 0.9)",
-                "rgba(237, 129, 40, 0.89)",
-                "rgba(50, 172, 45, 0.97)"
-              ],
-              "colorMode": null,
-              "pattern": "/.*/",
-              "thresholds": [],
-              "sanitize": true
+              "label": null,
+              "show": true,
+              "logBase": 1,
+              "min": null,
+              "max": null,
+              "format": "short"
             }
           ],
-          "transform": "annotations",
-          "pageSize": null,
-          "showHeader": true,
-          "columns": [],
-          "scroll": true,
-          "fontSize": "100%",
-          "sort": {
-            "col": 0,
-            "desc": true
+          "xaxis": {
+            "show": true
           },
-          "datasource": "customjson"
+          "grid": {
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": true,
+            "sort": 0,
+            "msResolution": false
+          },
+          "timeFrom": null,
+          "timeShift": null,
+          "aliasColors": {},
+          "seriesOverrides": []
         }
       ],
       "title": "Row"
@@ -146,14 +171,7 @@
     "list": []
   },
   "annotations": {
-    "list": [
-      {
-        "datasource": "customjson",
-        "enable": true,
-        "iconColor": "rgb(96, 113, 255)",
-        "name": "bla"
-      }
-    ]
+    "list": []
   },
   "refresh": false,
   "schemaVersion": 12,

@@ -15,9 +15,9 @@
       "height": 237,
       "panels": [
         {
-          "title": "Panel Title",
+          "title": "failed exports",
           "error": false,
-          "span": 12,
+          "span": 6,
           "editable": true,
           "type": "table",
           "isNew": true,
@@ -59,54 +59,7 @@
             "col": 0,
             "desc": true
           },
-          "datasource": "customjson"
-        },
-        {
-          "title": "Panel Title",
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "table",
-          "isNew": true,
-          "id": 2,
-          "targets": [
-            {
-              "refId": "A",
-              "target": "foo"
-            }
-          ],
-          "styles": [
-            {
-              "type": "date",
-              "pattern": "Time",
-              "dateFormat": "YYYY-MM-DD HH:mm:ss"
-            },
-            {
-              "unit": "short",
-              "type": "string",
-              "decimals": 2,
-              "colors": [
-                "rgba(245, 54, 54, 0.9)",
-                "rgba(237, 129, 40, 0.89)",
-                "rgba(50, 172, 45, 0.97)"
-              ],
-              "colorMode": null,
-              "pattern": "/.*/",
-              "thresholds": [],
-              "sanitize": true
-            }
-          ],
-          "transform": "annotations",
-          "pageSize": null,
-          "showHeader": true,
-          "columns": [],
-          "scroll": true,
-          "fontSize": "100%",
-          "sort": {
-            "col": 0,
-            "desc": true
-          },
-          "datasource": "customjson"
+          "datasource": "one"
         }
       ],
       "title": "Row"

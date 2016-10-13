@@ -1,17 +1,8 @@
 {
   "port": 8080,
-  "pretty_json": true,
   "endpoints": [
     {
-      "path": "/",
-      "methods":{
-        "GET": {
-          "type":"info"
-        }
-      }
-    },
-    {
-      "path": "/search",
+      "path": "/one/search",
       "methods":{
         "POST": {
           "type":"filesystem",
@@ -19,18 +10,11 @@
             "output":"raw",
             "file": "/files/search.json"
           }
-        },
-        "GET": {
-          "type":"filesystem",
-          "config": {
-            "output":"raw",
-            "file": "/files/search.json"
-          }
         }
       }
     },
     {
-      "path": "/query",
+      "path": "/one/query",
       "methods":{
         "POST": {
           "type":"filesystem",
@@ -38,18 +22,11 @@
             "output":"raw",
             "file": "/files/query.json"
           }
-        },
-        "GET": {
-          "type":"filesystem",
-          "config": {
-            "output":"raw",
-            "file": "/files/query.json"
-          }
         }
       }
     },
     {
-      "path": "/annotations",
+      "path": "/one/annotations",
       "methods":{
         "POST": {
           "type":"filesystem",
@@ -57,8 +34,37 @@
             "output":"raw",
             "file": "/files/annotations.json"
           }
-        },
-        "GET": {
+        }
+      }
+    },
+    {
+      "path": "/two/search",
+      "methods":{
+        "POST": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/search.json"
+          }
+        }
+      }
+    },
+    {
+      "path": "/two/query",
+      "methods":{
+        "POST": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/query_drill_down.json"
+          }
+        }
+      }
+    },
+    {
+      "path": "/two/annotations",
+      "methods":{
+        "POST": {
           "type":"filesystem",
           "config": {
             "output":"raw",

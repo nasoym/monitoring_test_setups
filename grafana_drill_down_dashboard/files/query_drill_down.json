@@ -1,0 +1,23 @@
+[
+  {
+    "columns": [
+      { "text": "Time", "type": "time", "sort": true, "desc": true },
+      { "text": "vorgang", "type":"text" },
+      { "text": "meldung", "type":"text" }
+    ],
+    "rows": [
+      [
+        1451646000000,
+        "AB1234",
+        "<a href='https://ep2.mtp.rz-hypoport.local/ebda/joblist.html' target='_blank'>export fehlgeschlagen</a>"
+      ],
+      [
+        1451647000000,
+        "AB9999",
+        "<a href='https://ep2.mtp.rz-hypoport.local/ebda/joblist.html' target='_blank'>integrator nicht verfuegbar</a>"
+      ]
+    ],
+    "type": "table"
+  }
+]
+

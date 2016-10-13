@@ -4,11 +4,22 @@
 
 curl -X POST -H 'Content-Type: application/json;charset=UTF-8' --user admin:admin \
 --data-binary "{\
-\"name\": \"customjson\",\
+\"name\": \"one\",\
 \"type\": \"grafana-simple-json-datasource\",\
 \"access\": \"proxy\",\
-\"url\": \"http://datasource:8080\",\
+\"url\": \"http://datasource:8080/one\",\
 \"basicAuth\": false\
 }" \
 "${GRAFANA_SERVER}/api/datasources"
+
+curl -X POST -H 'Content-Type: application/json;charset=UTF-8' --user admin:admin \
+--data-binary "{\
+\"name\": \"two\",\
+\"type\": \"grafana-simple-json-datasource\",\
+\"access\": \"proxy\",\
+\"url\": \"http://datasource:8080/two\",\
+\"basicAuth\": false\
+}" \
+"${GRAFANA_SERVER}/api/datasources"
+
 
