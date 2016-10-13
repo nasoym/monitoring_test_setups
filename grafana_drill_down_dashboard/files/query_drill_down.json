@@ -8,12 +8,12 @@
     "rows": [
       [
         1451646000000,
-        "AB1234",
+        "<a href='http://jev.ep2.mtp.rz-hypoport.local/teilantraege/952694/1/1' target='_blank'>AB1234</a>",
         "<a href='https://ep2.mtp.rz-hypoport.local/ebda/joblist.html' target='_blank'>export fehlgeschlagen</a>"
       ],
       [
         1451647000000,
-        "AB9999",
+        "<a href='http://jev.ep2.mtp.rz-hypoport.local/teilantraege/952694/1/1' target='_blank'>AB9966</a>",
         "<a href='https://ep2.mtp.rz-hypoport.local/ebda/joblist.html' target='_blank'>integrator nicht verfuegbar</a>"
       ]
     ],
