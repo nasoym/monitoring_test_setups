@@ -1,0 +1,71 @@
+{
+  "port": 8080,
+  "pretty_json": true,
+  "endpoints": [
+    {
+      "path": "/",
+      "methods":{
+        "GET": {
+          "type":"info"
+        }
+      }
+    },
+    {
+      "path": "/search",
+      "methods":{
+        "POST": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/search.json"
+          }
+        },
+        "GET": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/search.json"
+          }
+        }
+      }
+    },
+    {
+      "path": "/query",
+      "methods":{
+        "POST": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/query.json"
+          }
+        },
+        "GET": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/query.json"
+          }
+        }
+      }
+    },
+    {
+      "path": "/annotations",
+      "methods":{
+        "POST": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/annotations.json"
+          }
+        },
+        "GET": {
+          "type":"filesystem",
+          "config": {
+            "output":"raw",
+            "file": "/files/annotations.json"
+          }
+        }
+      }
+    }
+  ]
+}

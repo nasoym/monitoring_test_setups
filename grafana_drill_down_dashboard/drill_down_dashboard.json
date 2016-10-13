@@ -1,0 +1,164 @@
+{
+  "id": 2,
+  "title": "ebda dashboard",
+  "description": "ebda dashboard",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": 237,
+      "panels": [
+        {
+          "title": "Panel Title",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "table",
+          "isNew": true,
+          "id": 1,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "foo"
+            }
+          ],
+          "styles": [
+            {
+              "type": "date",
+              "pattern": "Time",
+              "dateFormat": "YYYY-MM-DD HH:mm:ss"
+            },
+            {
+              "unit": "short",
+              "type": "string",
+              "decimals": 2,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "colorMode": null,
+              "pattern": "/.*/",
+              "thresholds": [],
+              "sanitize": true
+            }
+          ],
+          "transform": "table",
+          "pageSize": null,
+          "showHeader": true,
+          "columns": [],
+          "scroll": true,
+          "fontSize": "100%",
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "datasource": "customjson"
+        },
+        {
+          "title": "Panel Title",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "table",
+          "isNew": true,
+          "id": 2,
+          "targets": [
+            {
+              "refId": "A",
+              "target": "foo"
+            }
+          ],
+          "styles": [
+            {
+              "type": "date",
+              "pattern": "Time",
+              "dateFormat": "YYYY-MM-DD HH:mm:ss"
+            },
+            {
+              "unit": "short",
+              "type": "string",
+              "decimals": 2,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "colorMode": null,
+              "pattern": "/.*/",
+              "thresholds": [],
+              "sanitize": true
+            }
+          ],
+          "transform": "annotations",
+          "pageSize": null,
+          "showHeader": true,
+          "columns": [],
+          "scroll": true,
+          "fontSize": "100%",
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "datasource": "customjson"
+        }
+      ],
+      "title": "Row"
+    }
+  ],
+  "time": {
+    "from": "2016-01-01T10:00:00.000Z",
+    "to": "2016-01-01T14:00:00.000Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "1s",
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": [
+      {
+        "datasource": "customjson",
+        "enable": true,
+        "iconColor": "rgb(96, 113, 255)",
+        "name": "bla"
+      }
+    ]
+  },
+  "refresh": false,
+  "schemaVersion": 12,
+  "version": 0,
+  "links": [],
+  "gnetId": null
+}
+

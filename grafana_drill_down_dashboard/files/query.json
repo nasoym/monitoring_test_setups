@@ -1,0 +1,28 @@
+[
+  {
+    "columns": [
+      { "text": "Time", "type": "time", "sort": true, "desc": true },
+      { "text": "foo", "type":"text" },
+      { "text": "sum" }
+    ],
+    "rows": [
+      [
+        1451646000000,
+        "...",
+        3
+      ],
+      [
+        1451649600000,
+        "jev failed exports",
+        1
+      ],
+      [
+        1451649600000,
+        "<a href='dashboard/file/drill_down_dashboard.json'>ebda failed exports</a>",
+        4
+      ]
+    ],
+    "type": "table"
+  }
+]
+
