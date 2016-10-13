@@ -1,0 +1,17 @@
+#!/bin/bash
+
+docker-compose up -d
+
+echo "bla 1.0" | curl -i -XPOST --data-binary @- "http://localhost:9091/metrics/job/bla"
+for i in {1..20}; do 
+  curl -s "http://localhost:3000" >/dev/null && break
+  sleep 1
+done
+curl -s "http://localhost:3000" >/dev/null || { echo "grafana did not respond!" >&2; exit 1;}
+./add_datasources
+
+open -a "Google Chrome" "http://localhost:3000/dashboard/file/grafana_dashboard.json"
+
+sleep 5
+echo "bla 2.0" | curl -i -XPOST --data-binary @- "http://localhost:9091/metrics/job/bla"
+
