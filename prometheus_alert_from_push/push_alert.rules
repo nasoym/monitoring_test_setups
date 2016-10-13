@@ -1,0 +1,4 @@
+ALERT Foo
+  IF foo > 10 
+  LABELS { severity = "page" }
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ -z "$1" ]];then
+  echo "need to provide some metric"
+  exit 1
+fi
+
+echo "foo $1" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+

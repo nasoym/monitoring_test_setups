@@ -3,29 +3,23 @@ pushgateway:
     ports:
         - 9091:9091
 
+# alertmanager:
+#     image: prom/alertmanager:v0.4.2
+#     ports:
+#         - 9093:9093
+#     volumes:
+#         - ./alertmanager_config.yml:/etc/alertmanager/config.yml
+
 prometheus:
     image: prom/prometheus:0.20.0
-    restart: always
     volumes:
-        - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+        - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        - ./push_alert.rules:/etc/prometheus/alerts/push_alert.rules
     ports:
         - 9090:9090
     command: -config.file=/etc/prometheus/prometheus.yml -storage.local.path=/prometheus -web.console.libraries=/etc/prometheus/console_libraries -web.console.templates=/etc/prometheus/consoles
     links:
         - pushgateway
+        # - alertmanager
 
-grafana:
-    image: grafana/grafana
-    restart: always
-    ports:
-        - 3000:3000
-    volumes:
-        - ./grafana.ini:/var/lib/grafana/grafana.ini
-        - ./grafana_dashboard.json:/var/lib/grafana/dashboards/grafana_dashboard.json
-    command: --config /var/lib/grafana/grafana.ini
-    links:
-        - prometheus
-    environment:
-        - GF_DASHBOARDS_JSON_ENABLED=true
-        - GF_AUTH_ANONYMOUS_ENABLED=true
 
