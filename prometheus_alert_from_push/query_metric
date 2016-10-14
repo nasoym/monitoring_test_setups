@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+: ${JOB_NAME:="bla"}
+
+curl -s "http://localhost:9090/api/v1/query?query=${JOB_NAME}" | jq .
+
+

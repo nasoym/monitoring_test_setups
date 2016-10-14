@@ -5,16 +5,12 @@ global:
 
 # The root route on which each incoming alert enters.
 route:
-  # receiver: alertreceiver
-  #
+  receiver: alertreceiver
+
   # # The child route trees. Not used at the moment.
   # routes:
 
-# receivers:
-# - name: alertreceiver
-#   webhook_configs:
-#     - url: 'http://alertreceiver:9900/alert'
-    # - url: 'http://alertreceiver/abc/{{ .GroupLabels.alertname }}'
-    # - url: 'http://alertreceiver/foo/{{ template "webhook.url" . }}'
-    # - url: "http://alertreceiver/abc/{{ .GroupLabels.alertname }}"
-    # - url: "http://alertreceiver/abc/{{ .GroupLabels.alertname }}"
+receivers:
+- name: alertreceiver
+  webhook_configs:
+    - url: 'http://alertreceiver:9900/alert'
