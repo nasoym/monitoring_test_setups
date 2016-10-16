@@ -9,9 +9,12 @@
 #  IF absent(avg_over_time(bla[1m])) == 1
 #
 
-ALERT FooAlert
-  IF sum_over_time(foo[5s]) > 10
-
 ALERT FooAbsent
-  IF absent(foo) == 1
+  IF absent(foo)
+
+ALERT FooGTTen
+  IF foo > 10
+
+ALERT FooSumOver5M
+  IF sum_over_time(foo[5m])
 

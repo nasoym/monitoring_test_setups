@@ -10,7 +10,7 @@ fi
 : ${JOB_NAME:="foo"}
 : ${VALUE:="$1"}
 
-echo "${JOB_NAME} $1" \
+echo "${JOB_NAME} $1 $(date +%s)000" \
   | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/${JOB_NAME}"
 
 
