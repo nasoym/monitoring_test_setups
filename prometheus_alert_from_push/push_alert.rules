@@ -1,10 +1,17 @@
-ALERT Foo
-  IF foo > 10 
-  LABELS { severity = "page" }
+#ALERT Foo
+#  IF foo > 10 
+#  LABELS { severity = "page" }
+#
+#ALERT ToOld
+#  IF min(time() - bla) > 60 * 60
+#
+#ALERT NoBla
+#  IF absent(avg_over_time(bla[1m])) == 1
+#
 
-ALERT ToOld
-  IF min(time() - bla) > 60 * 60
+ALERT FooAlert
+  IF sum_over_time(foo[5s]) > 10
 
-ALERT NoBla
-  IF absent(avg_over_time(bla[1m])) == 1
+ALERT FooAbsent
+  IF absent(foo) == 1
 

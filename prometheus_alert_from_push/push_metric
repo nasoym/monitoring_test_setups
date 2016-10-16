@@ -7,7 +7,7 @@ fi
 
 # echo "foo $1" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
 
-: ${JOB_NAME:="bla"}
+: ${JOB_NAME:="foo"}
 : ${VALUE:="$1"}
 echo -e "# TYPE another_metric gauge\n${JOB_NAME} ${VALUE}" \
   | curl -i --data-binary @- \
