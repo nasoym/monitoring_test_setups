@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "bla $1" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/bla"

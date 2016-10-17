@@ -1,0 +1,11 @@
+scrape_configs:
+  - job_name: 'all'
+    scrape_interval: 5s
+    scrape_timeout: 4s
+    consul_sd_configs:
+      - server: 'consul:8500'
+
+    relabel_configs:
+      - source_labels: [__meta_consul_tags]
+        regex: .*monitor.*
+        action: keep
