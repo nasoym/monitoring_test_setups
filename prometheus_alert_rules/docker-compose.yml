@@ -42,7 +42,7 @@ alertmanager:
         - alertreceiver
 
 prometheus:
-    image: prom/prometheus:0.20.0
+    image: prom/prometheus:v1.2.1
     restart: always
     volumes:
         - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
