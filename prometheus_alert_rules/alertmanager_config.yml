@@ -12,8 +12,8 @@ route:
 
 receivers:
 - name: alertreceiver
-  webhook_configs:
-    - url: 'http://alertreceiver:9900/alert'
+  # webhook_configs:
+    # - url: 'http://alertreceiver:9900/alert'
     # - url: 'http://alertreceiver/abc/{{ .GroupLabels.alertname }}'
     # - url: 'http://alertreceiver/foo/{{ template "webhook.url" . }}'
     # - url: "http://alertreceiver/abc/{{ .GroupLabels.alertname }}"
