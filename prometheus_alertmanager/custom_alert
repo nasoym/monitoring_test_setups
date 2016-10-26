@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# clients are expected to continuously re-send alerts as long as they are still
+# active (usually on the order of 30 seconds to 3 minutes).
+#
+# The labels are used to identify identical instances of an alert and
+# to perform deduplication. The annotations are always set to those
+# received most recently and are not identifying an alert.
+#
+# Both timestamps are optional. If startsAt is omitted, the current
+# time is assigned by the Alertmanager. endsAt is only set if the end
+# time of an alert is known. Otherwise it will be set to a configurable
+# timeout period from the time since the alert was last received.
+#
+# The generatorURL field is a unique back-link which identifies the
+# causing entity of this alert in the client.
+
+
+ALERT="
+[
+  {
+    \"labels\": {
+      \"label_name_foo\": \"label_value_bar\",
+      \"label_name_foo_foo\": \"label_value_bar\"
+    },
+    \"annotations\": {
+      \"annotation_name_one\": \"annotation_value_two>\",
+      \"annotation_name_three\": \"annotation_value_two>\"
+    },
+    \"startsAt\": \"2016-10-26T20:05:00Z\",
+    \"endsAt\": \"2016-10-26T20:10:00Z\",
+    \"generatorURL\": \"https://www.startpage.com\"
+  },
+  {
+    \"labels\": {
+      \"label_name_bla\": \"label_value_ggggg\"
+    },
+    \"annotations\": { }
+  }
+]"
+
+# echo "$ALERT"
+
+echo "$ALERT" | curl -i -XPOST --data-binary @- "http://localhost:9093/api/v1/alerts"
+
+

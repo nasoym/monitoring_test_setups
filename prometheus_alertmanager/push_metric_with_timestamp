@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [[ -z "$1" ]];then
+  echo "need to provide some metric"
+  exit 1
+fi
+
+# echo "foo $1" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+
+: ${JOB_NAME:="foo"}
+: ${VALUE:="$1"}
+
+echo "${JOB_NAME} $1 $(date +%s)000" \
+  | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/${JOB_NAME}"
+
+
+# echo -e "# TYPE another_metric gauge\n${JOB_NAME} ${VALUE}" \
+#   | curl -i --data-binary @- \
+#   "http://localhost:9091/metrics/job/${JOB_NAME}"
+
