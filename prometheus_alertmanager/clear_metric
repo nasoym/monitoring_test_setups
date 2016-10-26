@@ -1,7 +1,0 @@
-#!/bin/bash
-
-
-: ${JOB_NAME:="bla"}
-
-curl -i -X DELETE "http://localhost:9091/metrics/job/${JOB_NAME}"
-

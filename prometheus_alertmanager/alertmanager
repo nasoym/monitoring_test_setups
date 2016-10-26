@@ -14,28 +14,27 @@
 #
 # The generatorURL field is a unique back-link which identifies the
 # causing entity of this alert in the client.
-
+  # {
+  #   \"labels\": {
+  #     \"label_name_foo\": \"label_value_bar\",
+  #     \"label_name_foo_foo\": \"label_value_bar\"
+  #   },
+  #   \"annotations\": {
+  #     \"annotation_name_one\": \"annotation_value_two>\",
+  #     \"annotation_name_three\": \"annotation_value_two>\"
+  #   },
+  #   \"startsAt\": \"2016-10-26T20:05:00Z\",
+  #   \"endsAt\": \"2016-10-26T20:10:00Z\",
+  #   \"generatorURL\": \"https://www.startpage.com\"
+  # },
 
 ALERT="
 [
   {
     \"labels\": {
-      \"label_name_foo\": \"label_value_bar\",
-      \"label_name_foo_foo\": \"label_value_bar\"
-    },
-    \"annotations\": {
-      \"annotation_name_one\": \"annotation_value_two>\",
-      \"annotation_name_three\": \"annotation_value_two>\"
-    },
-    \"startsAt\": \"2016-10-26T20:05:00Z\",
-    \"endsAt\": \"2016-10-26T20:10:00Z\",
-    \"generatorURL\": \"https://www.startpage.com\"
-  },
-  {
-    \"labels\": {
+      \"alertname\": \"BarAlert\",
       \"label_name_bla\": \"label_value_ggggg\"
-    },
-    \"annotations\": { }
+    }
   }
 ]"
 

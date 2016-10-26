@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "BODY" >&2
+cat - >&2
+echo >&2
+echo >&2
+set | grep "REQUEST_" >&2
+
+echo '{"status":"success"}'
