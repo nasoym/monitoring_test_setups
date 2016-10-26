@@ -32,7 +32,7 @@ ALERT="
 [
   {
     \"labels\": {
-      \"alertname\": \"BarAlert\",
+      \"alertname\": \"PromAlert\",
       \"label_name_bla\": \"label_value_ggggg\"
     }
   }

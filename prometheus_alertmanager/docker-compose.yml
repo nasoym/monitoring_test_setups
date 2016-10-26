@@ -16,6 +16,8 @@ alertmanager:
     - 9093:9093
   volumes:
     - ./alertmanager_config.yml:/etc/alertmanager/config.yml
+  links:
+    - dumpreceiver
 
 prometheus:
   image: prom/prometheus:0.20.0

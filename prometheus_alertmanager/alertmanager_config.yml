@@ -9,3 +9,7 @@ route:
 
 receivers:
 - name: empty-receiver
+  webhook_configs:
+    - url: 'http://dumpreceiver:8080/alert'
+
+
