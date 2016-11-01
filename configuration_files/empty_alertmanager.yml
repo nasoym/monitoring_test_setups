@@ -1,0 +1,41 @@
+global:
+  resolve_timeout: 10m
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1m
+
+route:
+  group_by: [alertname, service]
+  receiver: alertreceiver
+
+  routes:
+  - match:
+      service: foo
+    receiver: foo_receiver
+    group_by: [service]
+
+
+# # How long to initially wait to send a notification for a group
+# # of alerts. Allows to wait for an inhibiting alert to arrive or collect
+# # more initial alerts for the same group. (Usually ~0s to few minutes.)
+# [ group_wait: <duration> ]
+#
+# # How long to wait before sending notification about new alerts that are
+# # in are added to a group of alerts for which an initial notification
+# # has already been sent. (Usually ~5min or more.)
+# [ group_interval: <duration> ]
+#
+# # How long to wait before sending a notification again if it has already
+# # been sent successfully for an alert. (Usually ~3h or more).
+# [ repeat_interval: <duration> ]
+
+
+receivers:
+- name: foo_receiver
+  webhook_configs:
+    - url: 'http://192.168.1.249:8080/fooalert'
+- name: alertreceiver
+  webhook_configs:
+    - url: 'http://192.168.1.249:8080/alert'
+
+
