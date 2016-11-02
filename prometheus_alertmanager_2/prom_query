@@ -1,0 +1,35 @@
+#!/bin/bash
+# &start=$(gdate -d "- 5 minutes" +%FT%T).000Z\
+# &end=$(gdate +%FT%T).000Z\
+# &start=2016-11-01T21:00:00.000Z\
+# &end=2016-11-01T21:15:00.000Z\
+
+# curl -i \
+#   "http://localhost:9090/api/v1/query?query=foo"
+# exit 0
+
+curl -s \
+  "http://localhost:9090/api/v1/query_range?\
+query=foo\
+&start=$(gdate -d "- 5 minutes" +%s)\
+&end=$(gdate +%s)\
+&step=1s\
+" | jq -r -c '.data.result[0].values|map("\(.[0]) \(.[1])")[]'
+
+# | jq '.data.result[0].values'
+
+# {
+#   "status": "success",
+#   "data": {
+#     "resultType": "matrix",
+#     "result": [
+#       {
+#         "metric": {
+#           "__name__": "foo",
+#           "job": "foo"
+#         },
+#         "values": [
+#  
+#
+#
+#

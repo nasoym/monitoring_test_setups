@@ -1,0 +1,12 @@
+global:
+  resolve_timeout: 1m
+  group_wait: 1s
+  group_interval: 1s
+  repeat_interval: 30s
+
+route:
+  receiver: empty-receiver
+
+receivers:
+- name: empty-receiver
+

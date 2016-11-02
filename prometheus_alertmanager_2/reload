@@ -1,0 +1,5 @@
+#!/bin/bash
+
+curl -i -XPOST "http://localhost:9090/-/reload"
+curl -i -XPOST "http://localhost:9093/-/reload"
+

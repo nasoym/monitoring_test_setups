@@ -1,0 +1,5 @@
+#!/bin/bash
+curl -s "http://localhost:9093/api/v1/alerts" \
+  | jq -s -r '.[0].data|map(select(.endsAt|contains("0001")))|map(.labels.alertname)[]'
+
+

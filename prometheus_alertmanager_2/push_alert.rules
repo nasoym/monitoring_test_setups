@@ -1,0 +1,7 @@
+ALERT FooAlert
+  IF foo > 20
+  FOR 1s
+
+ALERT ImmFooAlert
+  IF foo > 20
+

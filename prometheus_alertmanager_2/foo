@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+if [ -n "$1" ];then
+  echo "foo $1" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+
+else
+  echo "foo 1" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+  sleep 5
+  echo "foo 40" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+  sleep 5
+  echo "foo 5" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+  sleep 5
+  echo "foo 15" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+  sleep 5
+  echo "foo 1" | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+  sleep 5
+fi
+
