@@ -7,6 +7,12 @@ global:
 route:
   receiver: empty-receiver
 
+  routes:
+    - match:
+        silent_alert: "true"
+      receiver: silent-receiver 
+
 receivers:
 - name: empty-receiver
+- name: silent-receiver
 

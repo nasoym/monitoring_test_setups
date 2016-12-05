@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ALERT="
+[
+  {
+    \"labels\": {
+      \"alertname\": \"alert eins\",
+      \"silent_alert\": \"false\"
+    }
+  }
+]"
+
+echo "$ALERT" | curl -i -XPOST --data-binary @- "http://localhost:9093/api/v1/alerts"
+
