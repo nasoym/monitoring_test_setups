@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# curl -XPOST --data-binary "{\"value\":10,\"@timestamp\":\"$(date +%FT%T)\"}" "http://localhost:9200/test/test/"
+curl -XPOST --data-binary "{\"value\":$((RANDOM / 10000)),\"@timestamp\":[$(gdate +%s%3N)]}" "http://localhost:9200/test/test"
+sleep 0.1
+
+

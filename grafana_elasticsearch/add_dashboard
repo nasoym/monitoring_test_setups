@@ -1,0 +1,16 @@
+#!/bin/bash
+
+: ${GRAFANA_SERVER:="http://localhost:3000"}
+
+cat dashboard.json \
+  | jq '{dashboard:.,overwrite:true} | .dashboard.id=null' \
+  | curl \
+  -s \
+  -X POST \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  --user admin:admin \
+  --data-binary @- \
+  "${GRAFANA_SERVER}/api/dashboards/db"
+
+

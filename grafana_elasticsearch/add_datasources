@@ -1,0 +1,26 @@
+#!/bin/bash
+
+: ${GRAFANA_SERVER:="http://localhost:3000"}
+
+curl -X POST -H 'Content-Type: application/json;charset=UTF-8' --user admin:admin \
+--data-binary "{\
+\"name\": \"customjson\",\
+\"type\": \"grafana-simple-json-datasource\",\
+\"access\": \"proxy\",\
+\"url\": \"http://simplesource:8080\",\
+\"basicAuth\": false\
+}" \
+"${GRAFANA_SERVER}/api/datasources"
+
+curl -X POST -H 'Content-Type: application/json;charset=UTF-8' --user admin:admin \
+--data-binary "{\
+\"name\": \"es\",\
+\"type\": \"elasticsearch\",\
+\"access\": \"proxy\",\
+\"url\": \"http://es:9200\",\
+\"database\": \"test\",\
+\"basicAuth\": false\
+}" \
+"${GRAFANA_SERVER}/api/datasources"
+ 
+

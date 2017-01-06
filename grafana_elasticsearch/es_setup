@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# curl -XPOST -d '{"settings":{"number_of_shards":1},"mappings":{"_default_":{"_timestamp":{"enabled":true,"store":true}}}}' http://localhost:9200/test 
+
+curl -XPOST -d '{"mappings":{"my_type":{"properties":{"@timestamp":{"type":"date"}}}}}' http://localhost:9200/test 
+
