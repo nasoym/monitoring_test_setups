@@ -11,13 +11,16 @@
 # ]
 # "
 
-echo "[{
+echo "[
+{
+\"type\": \"table\",
 \"columns\": [
   { \"text\": \"name\", \"type\":\"text\" },
-  { \"text\": \"code\", \"type\":\"number\", \"sort\":true, \"desc\":false }
+  { \"text\": \"code\", \"type\":\"number\"}
 ],
-\"rows\": [[\"foo\",400],[\"bar\",500]], 
-\"type\": \"table\"}]
+\"rows\": [[\"foo <a href='dddddd' target='_blank'>ddd</a>\",400],[\"bar\",500]]
+}
+]
 "
 
 # echo "{
