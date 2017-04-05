@@ -1,4 +1,5 @@
 global:
+  group_wait: 0s
 
 # The root route on which each incoming alert enters.
 route:
