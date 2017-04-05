@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ -n "$1" ]]; then
+  VALUE="$1"  
+else
+  VALUE="1"  
+fi
+
+echo "prometheusalert $VALUE" \
+  | curl \
+-i -XPUT \
+--data-binary @- \
+"http://localhost:9091/metrics/job/prometheusalert"
+
