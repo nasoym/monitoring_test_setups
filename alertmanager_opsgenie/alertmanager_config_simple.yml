@@ -1,0 +1,25 @@
+global:
+  resolve_timeout: 30s
+
+route:
+  receiver: receiver
+  group_by: ['alertname','stage']
+  group_wait: 0s #intiall wait before sending
+  group_interval: 0s #how long to wait before sending again
+  repeat_interval: 20s
+
+receivers:
+- name: receiver
+  opsgenie_configs:
+  - api_key: 'abc'
+    api_host: http://bss:8080/
+    description: '123-{{ range .Alerts }}{{ .Labels.alertname }}{{ end }}'
+    message: 'abc-{{ range .Alerts }}{{ .Labels.alertname }}{{ end }}'
+    teams: 'xyz'
+    tags: foo,bla,bar
+    details:
+      priority: 'ddd'
+      foo: "$FOO"
+      bar: "${FOO}"
+      bla: "<% ENV['FOO'] %>"
+

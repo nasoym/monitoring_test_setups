@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# cat - >&2
+# echo "1234" >&2
+# env >&2
+echo "-------------- uri: ">&2
+echo "$request_uri" >&2
+
+echo "-------------- headers: ">&2
+echo -n "$request_header_lines" >&2
+
+echo "-------------- content: ">&2
+echo "$request_content" >&2
+
+# echo "ffff"
+
