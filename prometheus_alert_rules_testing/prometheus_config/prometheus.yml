@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 5s
+  scrape_timeout: 4s
+  # evaluation_interval: 15s
+  # foo
+
+rule_files:
+  - /prometheus_rules/*.rules
+  - /prometheus_rules/serviceA/*.rules
+
+scrape_configs:
+  - job_name: pushgateway
+    static_configs:
+      - targets: ['pushgateway:9091']
+

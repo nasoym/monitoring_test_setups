@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function cleanup(){
+  echo
+  echo 'logs 0' | curl -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/logs"
+  exit 0
+}
+trap cleanup SIGTERM SIGINT SIGHUP EXIT
+
+while true; do
+  gtimeout 15 cat | awk '{print $3}' | grep 9 | wc -l | sed 's/^/logs /g' \
+  | tee >(cat >&2) \
+  | curl -s -XPOST --data-binary @- "http://localhost:9091/metrics/job/logs"
+done

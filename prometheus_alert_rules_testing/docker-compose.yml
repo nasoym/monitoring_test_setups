@@ -1,0 +1,32 @@
+version: '3'
+services:
+  pushgateway:
+    image: prom/pushgateway:0.3.0
+    ports:
+        - 9091:9091
+
+  prometheus:
+    image: prom/prometheus:0.20.0
+    ports:
+        - 9090:9090
+    command: -config.file=/prometheus_config/prometheus.yml
+    links:
+        - pushgateway
+    volumes:
+      - prometheus_config:/prometheus_config
+      - prometheus_rules:/prometheus_rules
+
+volumes:
+
+  prometheus_config:
+    driver: local
+    driver_opts:
+      o: bind
+      device: ${PWD}/prometheus_config
+
+  prometheus_rules:
+    driver: local
+    driver_opts:
+      o: bind
+      device: ${PWD}/prometheus_rules
+

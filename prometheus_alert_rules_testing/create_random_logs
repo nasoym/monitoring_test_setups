@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function cleanup(){
+  echo
+  exit 0
+}
+trap cleanup SIGTERM SIGINT SIGHUP EXIT
+
+while true; do 
+  echo "$(date +%FT%T) logs $RANDOM"; 
+  sleep 0.5; 
+done 
+
+
