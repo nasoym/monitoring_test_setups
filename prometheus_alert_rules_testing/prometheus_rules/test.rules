@@ -1,3 +1,0 @@
-ALERT RuleA
-  IF foo > 0
-

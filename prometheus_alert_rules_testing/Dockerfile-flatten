@@ -11,8 +11,12 @@ RUN apk update ; apk add bash parallel
 # CMD ["bash","-c","seq 1 4 | sed 's/^/---/g'"]
 WORKDIR /home/host
 
+RUN mkdir /script
+COPY flatten_rules.sh /script/
+
 # CMD ["bash","-c","find . -mindepth 2 -type f -name \"*.rules\" | parallel 'cat {} > $(echo \"{}\" | sed -e \"s/^\.\///g\" -e \"s/\//_/g\")'"]
-CMD ["bash","-c","find . -mindepth 2 -type f -name \"*.rules\" | parallel 'cat {} > $(echo {} | sed -e \"s/^\\.\\///g\" -e \"s/\\//_/g\")'"]
+# CMD ["bash","-c","find . -mindepth 2 -type f -name \"*.rules\" | parallel 'cat {} > $(echo {} | sed -e \"s/^\\.\\///g\" -e \"s/\\//_/g\")'"]
+CMD ["/script/flatten_rules.sh"]
 
 # CMD ["seq","1","4","|","cat"]
 
