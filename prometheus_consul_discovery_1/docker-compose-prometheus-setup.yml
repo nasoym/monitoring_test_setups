@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  pushgateway:
+    image: prom/pushgateway:v0.4.0
+    # networks:
+    #   - internal
+    ports:
+      - 9091:9091
+
+  prometheus:
+    image: prom/prometheus:v1.7.1
+    restart: unless-stopped
+    # networks:
+    #   - dind
+    #   - internal
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus:/prometheus
+    ports:
+      - 9090:9090
+    # command: -config.file=/etc/prometheus/prometheus.yml
+
+  docker:
+    image: docker:17.07-dind
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - docker:/var/lib/docker
+    ports:
+      - 8500:8500
+      - 2375:2375
+
+# networks:
+#   internal:
+#   dind:
+#     external:
+#       name: dind
+#
+
+volumes:
+  docker:
+  prometheus:
+
