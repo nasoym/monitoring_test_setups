@@ -1,6 +1,0 @@
-#!/bin/bash
-
-docker network create dind
-docker run --privileged --rm -d -p 2375:2375 -p8500:8500 --network dind --name docker docker:17.07-dind
-
-

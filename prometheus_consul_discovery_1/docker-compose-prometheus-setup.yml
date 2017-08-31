@@ -1,19 +1,9 @@
 version: '3'
 
 services:
-  pushgateway:
-    image: prom/pushgateway:v0.4.0
-    # networks:
-    #   - internal
-    ports:
-      - 9091:9091
-
   prometheus:
     image: prom/prometheus:v1.7.1
     restart: unless-stopped
-    # networks:
-    #   - dind
-    #   - internal
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus:/prometheus
@@ -30,13 +20,6 @@ services:
     ports:
       - 8500:8500
       - 2375:2375
-
-# networks:
-#   internal:
-#   dind:
-#     external:
-#       name: dind
-#
 
 volumes:
   docker:

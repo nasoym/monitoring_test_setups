@@ -6,9 +6,6 @@ services:
     ports:
       - 8500:8500
     command: -bootstrap 
-    # command: -server -bootstrap -advertise docker
-    # command: -server -bootstrap -advertise 172.17.0.1
-    # -advertise ${HOST_IP_ADDRESS}
 
   registrator:
     image: gliderlabs/registrator 
@@ -16,14 +13,14 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock 
     command: consul://consul:8500
-    # command: -ip ${HOST_IP_ADDRESS} consul://consul:8500
-    # command: -ip docker consul://consul:8500
 
   pushgateway:
     image: prom/pushgateway:v0.4.0
     restart: unless-stopped
     environment:
-      - SERVICE_TAGS=monitored
+      # - SERVICE_TAGS=monitored
+      - SERVICE_NAME=bss_bss
+      - SERVICE_TAGS=monitored,path=metrics
     ports:
       - 9091
 
