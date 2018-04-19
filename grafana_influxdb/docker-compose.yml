@@ -1,17 +1,34 @@
-influxdb:
-   image: influxdb
-   ports: 
-     - 8083:8083
-     - 8086:8086
+version: '3'
+services:
+  influxdb:
+    image: influxdb:1.5.2-alpine
+    ports: 
+      - 8083:8083
+      - 8086:8086
+        # env INFLUXDB_DB=events
 
-grafana:
-   image: grafana/grafana:3.1.1
-   ports: 
-     - 3000:3000
-   environment:
-     - GF_DASHBOARDS_JSON_ENABLED=true
-     - GF_AUTH_ANONYMOUS_ENABLED=true
-   links:
-     - influxdb
+  grafana:
+    image: grafana/grafana:4.4.3
+    # image: grafana/grafana:5.0.3
+    ports: 
+      - 3000:3000
+    environment:
+      - GF_DASHBOARDS_JSON_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_INSTALL_PLUGINS=grafana-simple-json-datasource,novalabs-annotations-panel
+    links:
+      - influxdb
 
-
+  #
+  # grafana2:
+  #   image: grafana/grafana:5.0.3
+  #   ports: 
+  #     - 3002:3000
+  #   environment:
+  #     - GF_DASHBOARDS_JSON_ENABLED=true
+  #     - GF_AUTH_ANONYMOUS_ENABLED=true
+  #   links:
+  #     - influxdb
+  #
+  #
+  #
