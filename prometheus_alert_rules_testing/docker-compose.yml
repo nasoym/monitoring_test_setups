@@ -1,12 +1,12 @@
 version: '3'
 services:
   pushgateway:
-    image: prom/pushgateway:0.3.0
+    image: prom/pushgateway:v0.5.1
     ports:
         - 9091:9091
 
   prometheus:
-    image: prom/prometheus:0.20.0
+    image: prom/prometheus:v1.7.1
     ports:
         - 9090:9090
     command: -config.file=/prometheus_config/prometheus.yml

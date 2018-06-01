@@ -6,9 +6,8 @@ else
   VALUE="1"  
 fi
 
-echo "prometheusalert $VALUE" \
-  | curl \
--i -XPUT \
---data-binary @- \
-"http://localhost:9091/metrics/job/prometheusalert"
+: ${name:="prometheusalert"}
+
+echo "${name} $VALUE" \
+  | curl -i -XPUT --data-binary @- "http://localhost:9091/metrics/job/${name}"
 
