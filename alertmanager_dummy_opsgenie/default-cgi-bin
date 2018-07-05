@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# more portable than /bin/bash
+
+set -o errexit  # abort when any commands exits with error
+set -o pipefail # abort when any command in a pipe exits with error
+set -o nounset  # abort when any unset variable is used
+set -f # prevent bash from expanding glob
+set -o errtrace # inherits trap on ERR in function and subshell
+trap 'echo "$0: line ${LINENO}: exiting because of error";exit 1' ERR
+
+
+echo "${REQUEST_URI}" >&2
+env | grep "^HTTP_" >&2
+echo body >&2
+cat - >&2
+echo ---------------------- >&2
+
+printf "Content-type: application/json; charset=iso-8859-1\n\n"
+
+printf "{}\n"
+
+

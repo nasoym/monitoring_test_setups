@@ -1,0 +1,19 @@
+version: '3'
+services:
+  alertmanager:
+    image: prom/alertmanager:v0.14.0
+    ports:
+      - 9093:9093
+    volumes:
+      - ./alertmanager_config.yml:/etc/alertmanager/config.yml
+
+  opsgenie:
+    image: hypoport/httpd-cgi
+    volumes:
+      - ./default-cgi-bin:/usr/local/apache2/cgi-bin/default
+      - ./default-cgi-bin:/usr/local/apache2/cgi-bin/v2/alerts
+    ports:
+      - 6060:80
+
+
+

@@ -1,0 +1,21 @@
+global:
+  resolve_timeout: 30s # ResolveTimeout is the time after which an alert is declared resolved : default = 5m
+  opsgenie_api_url: http://opsgenie/
+
+route:
+  group_by: ['alertname']
+  group_wait: 5s #intiall wait before sending, usually a few seconds
+  group_interval: 10s #how long to wait before sending again, usually ~5m
+  repeat_interval: 20s # How long to wait before sending a notification again, usually ~3h
+  receiver: opsgenie
+
+  routes:
+
+receivers:
+- name: opsgenie
+  opsgenie_configs:
+  - api_key: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+    tags: '{{ .CommonLabels.tags }}'
+    priority: '{{ .CommonLabels.priority }}'
+    # entity: '{{ .CommonLabels.instance }}'
+
