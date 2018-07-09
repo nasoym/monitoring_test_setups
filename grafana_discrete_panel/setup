@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+set -o errexit  # abort when any commands exits with error
+set -o pipefail # abort when any command in a pipe exits with error
+set -o nounset  # abort when any unset variable is used
+set -f # prevent bash from expanding glob
+trap 'echo "$0: line ${LINENO}: exiting because of error";exit 1' ERR
+
+if [[ "${trace:=0}" -eq 1 ]];then
+  PS4='${LINENO}: '
+  set -x
+fi
+
+
+: ${grafana_server:="http://localhost:3000"}
+: ${influxdb_server:="http://localhost:8086"}
+
+
+if [[ "$#" -eq 0 ]];then
+  :
+  $0 influxdb_create_db
+  $0 add_datasource
+  $0 add_dashboard
+  $0 influxdb_add_metric
+
+elif [[ "$1" == "influxdb_add_metric" ]];then shift
+  curl -i -s \
+    -XPOST \
+    --data-binary "foo,host=bar value=${RANDOM} $(date -u +%s)" \
+    "${influxdb_server}/write?db=mydb&precision=s" 
+
+elif [[ "$1" == "influxdb_read_metric" ]];then shift
+  curl -i -s -G \
+    --data-urlencode "db=mydb" \
+    --data-urlencode "q=SELECT \"value\" FROM \"foo\" WHERE \"host\"='bar'" \
+    "${influxdb_server}/query?pretty=true" 
+
+
+elif [[ "$1" == "influxdb_create_events" ]];then shift
+  curl -i \
+    -X POST \
+    --data-binary "events text=\"ballalalalalaal\" $(date -u +%s)" \
+    "${influxdb_server}/write?db=mydb&precision=s" 
+
+elif [[ "$1" == "influxdb_read_events" ]];then shift
+  curl -i -s \
+    --data-urlencode "db=mydb" \
+    --data-urlencode "q=SELECT \"text\" FROM \"events\"" \
+    "${influxdb_server}/query?pretty=true" 
+
+elif [[ "$1" == "influxdb_create_db" ]];then shift
+  curl -i -s \
+    --data-urlencode "q=CREATE DATABASE mydb" \
+    "${influxdb_server}/query"
+
+elif [[ "$1" == "list_dashboards" ]];then shift
+  curl \
+    -s \
+    -X GET \
+    --user "admin:admin" \
+    "${grafana_server}/api/search" \
+  | jq -r 'map(.uri)[]'
+
+elif [[ "$1" == "get_dashboard" ]];then shift
+  : ${dashboard_name:="dashboard"}
+  curl \
+    -s \
+    -X GET \
+    --user "admin:admin" \
+    "${grafana_server}/api/dashboards/db/${dashboard_name}" \
+  | jq '.dashboard' > ${dashboard_name}.json
+
+elif [[ "$1" == "add_dashboard" ]];then shift
+  : ${dashboard_file:="dashboard.json"}
+  cat ${dashboard_file} \
+  | jq '{dashboard:.,overwrite:true}|.dashboard.id=null|.dashboard.version=null' \
+  | curl \
+    -s \
+    -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    --user "admin:admin" \
+    --data-binary "@-" \
+    "${grafana_server}/api/dashboards/db"
+
+elif [[ "$1" == "add_datasource" ]];then shift
+  curl -X POST -H 'Content-Type: application/json;charset=UTF-8' --user "admin:admin" \
+    --data-binary "{\
+\"name\": \"influxdb\",\
+\"type\": \"influxdb\",\
+\"access\": \"proxy\",\
+\"url\": \"http://influxdb:8086\",\
+\"database\": \"mydb\",\
+\"basicAuth\": false,\
+\"isDefault\": true\
+}" \
+    "${grafana_server}/api/datasources"
+
+fi
+
+
+ 
+
