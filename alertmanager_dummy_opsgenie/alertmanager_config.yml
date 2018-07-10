@@ -17,5 +17,9 @@ receivers:
   - api_key: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
     tags: '{{ .CommonLabels.tags }}'
     priority: '{{ .CommonLabels.priority }}'
-    # entity: '{{ .CommonLabels.instance }}'
+    details:
+      entity: '{{ .CommonLabels.instance }}'
 
+templates:
+- '/etc/alertmanager/templates/opsgenie.tmpl'
+    
