@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 5s
+  scrape_timeout: 4s # How long until a scrape request times out.  default = 10s 
+  evaluation_interval: 5s # How frequently to evaluate rules.  default = 1m 
+
+rule_files:
+  - /etc/prometheus/recording.rules
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  

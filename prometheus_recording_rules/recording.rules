@@ -1,0 +1,19 @@
+
+up_up = up
+
+a:b = prometheus_target_interval_length_seconds_sum
+
+
+xxx = prometheus_engine_query_duration_seconds
+
+
+uu{foo="444"} = prometheus_engine_query_duration_seconds
+
+
+zz{a="a",b="b"} = count(prometheus_engine_query_duration_seconds) by (slice)
+zz{a="cccccc",b="b"} = count(prometheus_engine_query_duration_seconds) by (slice)
+
+
+zz{a="cccccc",b="b",slice="inner_eval"} = 9494949449
+
+

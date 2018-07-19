@@ -1,0 +1,10 @@
+prometheus:
+    image: prom/prometheus:v1.8.2
+    restart: always
+    volumes:
+        - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        - ./recording.rules:/etc/prometheus/recording.rules
+    ports:
+        - 9090:9090
+    command: -config.file=/etc/prometheus/prometheus.yml 
+
