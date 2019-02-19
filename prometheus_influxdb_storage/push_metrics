@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "foo{} ${RANDOM}" | curl -i -s -XPUT --data-binary @- "http://localhost:9091/metrics/job/foo"
+
