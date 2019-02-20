@@ -13,6 +13,12 @@ services:
     ports:
       - 9091:9091
 
+  metric_emitter:
+    image: alpine
+    volumes:
+      - ./push_metrics:/root/push_metrics
+    command: /bin/sh -c "apk update; apk add bash curl; /root/push_metrics"
+
   influxdb:
     image: influxdb:1.7.4
     ports: 
@@ -20,7 +26,7 @@ services:
       - 8086:8086
     environment:
       - INFLUXDB_DB=prometheus
-      # - PRE_CREATE_DB=prometheus
+        # - PRE_CREATE_DB=prometheus
 
   grafana:
     image: grafana/grafana:5.4.3
@@ -33,4 +39,5 @@ services:
       - GF_DASHBOARDS_JSON_ENABLED=true
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_INSTALL_PLUGINS=grafana-simple-json-datasource,novalabs-annotations-panel
+      - GF_SECURITY_ADMIN_PASSWORD=foo
 

@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "panels": [
     {
@@ -58,7 +57,7 @@
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "1s"
               ],
               "type": "time"
             },
@@ -84,7 +83,7 @@
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "distinct"
               }
             ]
           ],
@@ -217,6 +216,7 @@
       }
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
@@ -224,7 +224,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -254,6 +254,7 @@
   },
   "timezone": "",
   "title": "foo",
-  "uid": "QHEyX7rmk",
+  "uid": "foo",
   "version": 1
 }
+

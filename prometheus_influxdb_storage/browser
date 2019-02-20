@@ -1,0 +1,5 @@
+#!/bin/bash
+
+browser_open_url "http://localhost:9090/graph?g0.range_input=5m&g0.expr=foo&g0.tab=0"
+browser_open_url "http://localhost:3000/d/foo/foo?refresh=5s&orgId=1"
+
