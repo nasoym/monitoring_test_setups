@@ -1,0 +1,36 @@
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus:v2.7.1
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+    command: --config.file=/etc/prometheus/prometheus.yml
+
+  pushgateway:
+    image: prom/pushgateway:v0.7.0
+    ports:
+      - 9091:9091
+    environment:
+      - SERVICE_TAGS=monitor,exporter
+
+  metric_emitter:
+    image: alpine
+    volumes:
+      - ./push_metrics:/root/push_metrics
+    command: /bin/sh -c "apk update; apk add bash curl; /root/push_metrics"
+
+  consul:
+    image: gliderlabs/consul-server 
+    ports:
+      - 8500:8500
+    command: -server -bootstrap -advertise 172.17.0.1
+
+  # registrator:
+  #   image: gliderlabs/registrator
+  #   volumes:
+  #     - /var/run/docker.sock:/tmp/docker.sock
+  #   command: consul://consul:8500
+
+

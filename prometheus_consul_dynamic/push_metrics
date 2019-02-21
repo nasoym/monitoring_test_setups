@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true; do
+  echo "foo{} $(( ${RANDOM} % 10 ))" \
+    | curl -s -XPUT --data-binary @- "http://pushgateway:9091/metrics/job/foo"
+  sleep 1
+done
+
