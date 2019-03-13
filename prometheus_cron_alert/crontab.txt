@@ -1,0 +1,4 @@
+* * * * * echo "cron{} $(date +\%s)" | tee /etc/node_exporter_textfiles/cron.prom >> /var/log/cron.log
+* * * * * echo "abcd cron{} $(date +\%s)"  >> /var/log/cron.log
+* * * * * echo "run by cron at: $(date)." >> /var/log/cron.log
+

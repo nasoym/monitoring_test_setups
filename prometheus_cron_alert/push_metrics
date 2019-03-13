@@ -1,0 +1,22 @@
+#!/bin/bash
+
+duration="180"
+while true; do
+  echo "foo{} $(date +%s)" 
+  echo "cron_run{instance=\"foo\"} $(date +%s)" \
+    | curl -i -XPOST --data-binary @- "http://localhost:9091/metrics/job/cron_trigger"
+  echo "cron_duration{instance=\"foo\"} ${duration}" \
+    | curl -i -XPOST --data-binary @- "http://localhost:9091/metrics/job/cron_trigger"
+  sleep ${duration}
+done
+
+
+  # echo "cron_run{instance=\"foo\",type=\"event\"} $(date +%s)" \
+  #   | curl -i -XPUT --data-binary @- "http://localhost:9091/metrics/job/cron_event/type/event"
+  # echo "cron_run{instance=\"foo\",type=\"expected\"} $(date +%s)" \
+  #   | curl -i -XPUT --data-binary @- "http://localhost:9091/metrics/job/cron_event/type/expected"
+  # echo "foo{type=\"event\"} $(date +%s)" \
+  #   | curl -i -XPOST --data-binary @- "http://localhost:9091/metrics/job/foo/type/event"
+  # echo "foo{type=\"target\"} $(date +%s)" \
+  #   | curl -i -XPOST --data-binary @- "http://localhost:9091/metrics/job/foo/type/target"
+
