@@ -1,9 +1,13 @@
 version: '3'
 services:
   prometheus:
-    image: prom/prometheus:0.20.0
+    image: prom/prometheus:v1.8.2
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./targets_1.yml:/prometheus_configuration/targets/targets.yml:ro
+      - ./5s:/prometheus_configuration/targets/5s:ro
+      - ./10s:/prometheus_configuration/targets/10s:ro
+      - ./15s:/prometheus_configuration/targets/15s:ro
     ports:
       - 9090:9090
     command: -config.file=/etc/prometheus/prometheus.yml -storage.local.path=/prometheus -web.console.libraries=/etc/prometheus/console_libraries -web.console.templates=/etc/prometheus/consoles
