@@ -28,10 +28,10 @@ services:
     command: -server -bootstrap 
     # command: -server -bootstrap -advertise 172.17.0.1
 
-  # registrator:
-  #   image: gliderlabs/registrator
-  #   volumes:
-  #     - /var/run/docker.sock:/tmp/docker.sock
-  #   command: consul://consul:8500
+  registrator:
+    image: gliderlabs/registrator
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    command: consul://consul:8500
 
 
