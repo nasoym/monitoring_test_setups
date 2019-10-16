@@ -1,7 +1,7 @@
 version: '3'
 services:
   prometheus:
-    image: prom/prometheus:v2.7.1
+    image: prom/prometheus:v2.13.0
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
@@ -9,35 +9,26 @@ services:
     command: --config.file=/etc/prometheus/prometheus.yml
 
   pushgateway:
-    image: prom/pushgateway:v0.7.0
+    image: prom/pushgateway:v0.10.0
     ports:
       - 9091:9091
 
-  metric_emitter:
-    image: alpine
-    volumes:
-      - ./push_metrics:/root/push_metrics
-    command: /bin/sh -c "apk update; apk add bash curl; /root/push_metrics"
-
   influxdb:
-    image: influxdb:1.7.4
+    image: influxdb:1.7.8
     ports: 
       - 8083:8083
       - 8086:8086
+    volumes:
+      - ./influxdb_volume:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=prometheus
-        # - PRE_CREATE_DB=prometheus
+      - INFLUXDB_ADMIN_ENABLED=true
 
-  grafana:
-    image: grafana/grafana:5.4.3
-    volumes:
-      - ./grafana_provisioning:/etc/grafana/provisioning
-      - ./dashboard_foo.json:/var/lib/grafana/dashboards/dashboard_foo.json
-    ports: 
-      - 3000:3000
-    environment:
-      - GF_DASHBOARDS_JSON_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_INSTALL_PLUGINS=grafana-simple-json-datasource,novalabs-annotations-panel
-      - GF_SECURITY_ADMIN_PASSWORD=foo
-
+# volumes:
+#   influxdb:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       device: ./influxdb_volume
+#       o: bind
+#       
