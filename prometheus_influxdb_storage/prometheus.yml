@@ -8,9 +8,14 @@ scrape_configs:
     static_configs:
       - targets: ['pushgateway:9091']
 
-remote_write:
-  - url: "http://influxdb:8086/api/v1/prom/write?db=prometheus"
+# remote_write:
+#   - url: "http://influxdb:8086/api/v1/prom/write?db=prometheus"
 
 remote_read:
   - url: "http://influxdb:8086/api/v1/prom/read?db=prometheus"
+    # read_recent: false
+    # read_recent: true
+    required_matchers:
+      job: abc
+      bla: ghi
 
