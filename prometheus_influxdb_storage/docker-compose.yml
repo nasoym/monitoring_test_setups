@@ -17,11 +17,9 @@ services:
   influxdb:
     image: influxdb:1.7.8
     ports: 
-      - 8083:8083
       - 8086:8086
     volumes:
       - ./influxdb_volume:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=prometheus
-      - INFLUXDB_ADMIN_ENABLED=true
 
